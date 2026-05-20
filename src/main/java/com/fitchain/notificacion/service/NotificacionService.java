@@ -95,17 +95,6 @@ public class NotificacionService {
         return toResponseDTO(actualizada, cliente);
     }
 
-    public NotificacionResponseDTO enviar(Long id) {
-        log.info("Enviando notificación con id {}", id);
-        Notificacion notificacion = notificacionRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Notificación con id " + id + " no encontrada"));
-
-        notificacion.setEstado("ENVIADA");
-        Notificacion enviada = notificacionRepository.save(notificacion);
-        log.info("Notificación {} enviada", id);
-        return toResponseDTO(enviada, clienteClient.obtenerClientePorId(enviada.getClienteId()));
-    }
-
     public void eliminar(Long id) {
         log.info("Eliminando notificación con id {}", id);
         if (!notificacionRepository.existsById(id)) {

@@ -50,11 +50,6 @@ public class NotificacionController {
         return ResponseEntity.ok(notificacionService.actualizar(id, requestDTO));
     }
 
-    @PatchMapping("/{id}/enviar")
-    public ResponseEntity<NotificacionResponseDTO> enviar(@PathVariable Long id) {
-        return ResponseEntity.ok(notificacionService.enviar(id));
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         notificacionService.eliminar(id);
